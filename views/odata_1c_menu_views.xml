@@ -20,17 +20,30 @@
             sequence="3"/>
 
         <menuitem
-            id="menu_odata_config"
-            name="Config"
+            id="menu_odata_connection"
+            name="Connection"
             parent="menu_odata_root"
             sequence="5"/>
 
         <menuitem
-            id="menu_odata_config_list"
-            name="Configs"
-            parent="menu_odata_config"
-            action="action_1c_config"
+            id="menu_odata_connection_list"
+            name="Connection info"
+            parent="menu_odata_connection"
+            action="action_1c_connection"
             sequence="5"/>
+
+        <menuitem
+            id="menu_odata_route"
+            name="Route"
+            parent="menu_odata_root"
+            sequence="7"/>
+
+        <menuitem
+            id="menu_odata_route_list"
+            name="routes"
+            parent="menu_odata_route"
+            action="action_1c_route"
+            sequence="7"/>
 
     </data>
 </odoo>
