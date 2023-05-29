@@ -11,13 +11,14 @@ class OneCController(http.Controller):
     
     @http.route('/odata_1c/call_report/', type='http', auth='public', methods=['POST'], csrf=False) 
     def call(self, **args):
-        value = http.request.env['odata.1c.route'].get_by_route("debts", request.get_json_data())
+        value = http.request.env['odata.1c.route'].get_by_route("1c_ut/debts", request.get_json_data())
         _logger.info(value[0])
         return request.render("base_odata_1c.test", {"documents": value})
 
-    @http.route('/odata_1c/<route_name>/', type='json', auth='public', methods=['POST'], csrf=False) 
-    def get_debts(self,route_name=None, **args):
-        return http.request.env['odata.1c.route'].get_by_route(route_name, request.get_json_data())
+    @http.route(['/odata_1c/<string:route_name>/<string:base_name>/',
+                 '/odata_1c/<string:route_name>/'], type='json', auth='public', methods=['POST'], csrf=False) 
+    def get_data(self,route_name=None,base_name="1c_ut", **args):
+        return http.request.env['odata.1c.route'].get_by_route(f"{base_name}/{route_name}", request.get_json_data())
     
     # @http.route('/odata_1c/debts_avg/', type='json', auth='public', methods=['POST'], csrf=False) 
     # def get_debts_avg(self, **args):
