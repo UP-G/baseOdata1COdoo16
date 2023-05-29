@@ -7,10 +7,11 @@ import logging
 _logger = logging.getLogger(__name__)
 class Odata1CConnection(models.Model):
     _name = "odata.1c.connection"
-
-    login = fields.Char(string='Login', tracking=True)
-    password = fields.Char(string='Password', tracking=True)
-    url_pattern = fields.Char(string='Url', tracking=True)
+    _description = "Odata 1C connection"
+    
+    login = fields.Char(string='Login')
+    password = fields.Char(string='Password')
+    url_pattern = fields.Char(string='Url')
 
     def get_data(self, url_part, pars, obj= None):
         url = self.url_pattern.format(url_part=url_part)

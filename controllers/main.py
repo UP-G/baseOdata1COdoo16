@@ -9,20 +9,26 @@ _logger = logging.getLogger(__name__)
 
 class OneCController(http.Controller):
     
-    @http.route('/odata_1c/debts/', type='json', auth='public', methods=['POST'], csrf=False) 
-    def get_debts(self, **args):
-        return http.request.env['odata.1c.route'].get_by_route('1c_ut/debts', {'client_id': request.get_json_data().get('client_id')})
+    @http.route('/odata_1c/call_report/', type='http', auth='public', methods=['POST'], csrf=False) 
+    def call(self, **args):
+        value = http.request.env['odata.1c.route'].get_by_route("debts", request.get_json_data())
+        _logger.info(value[0])
+        return request.render("base_odata_1c.test", {"documents": value})
+
+    @http.route('/odata_1c/<route_name>/', type='json', auth='public', methods=['POST'], csrf=False) 
+    def get_debts(self,route_name=None, **args):
+        return http.request.env['odata.1c.route'].get_by_route(route_name, request.get_json_data())
     
-    @http.route('/odata_1c/debts_avg/', type='json', auth='public', methods=['POST'], csrf=False) 
-    def get_debts_avg(self, **args):
-        return http.request.env['odata.1c.route'].get_by_route('1c_ut/debts_avg', {'client_id': request.get_json_data().get('client_id')})
+    # @http.route('/odata_1c/debts_avg/', type='json', auth='public', methods=['POST'], csrf=False) 
+    # def get_debts_avg(self, **args):
+    #     return http.request.env['odata.1c.route'].get_by_route('1c_ut/debts_avg', {'client_id': request.get_json_data().get('client_id')})
 
-    @http.route('/odata_1c/debts2/', type='json', auth='public', methods=['POST'], csrf=False) 
-    def get_debts2(self, client_id, **args):
-        return http.request.env['odata.1c.route'].get_by_route('1c_ut/debts', client_id)
+    # @http.route('/odata_1c/debts2/', type='json', auth='public', methods=['POST'], csrf=False) 
+    # def get_debts2(self, client_id, **args):
+    #     return http.request.env['odata.1c.route'].get_by_route('1c_ut/debts', client_id)
 
-    @http.route('/odata_1c/debts_avg2/', type='json', auth='public', methods=['POST'], csrf=False) 
-    def get_debts_avg2(self, client_id, **args):
-        return http.request.env['odata.1c.route'].get_by_route('1c_ut/debts_avg', client_id)
+    # @http.route('/odata_1c/debts_avg2/', type='json', auth='public', methods=['POST'], csrf=False) 
+    # def get_debts_avg2(self, client_id, **args):
+    #     return http.request.env['odata.1c.route'].get_by_route('1c_ut/debts_avg', client_id)
 
     

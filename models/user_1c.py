@@ -5,11 +5,13 @@ import json
 
 class UserOneC(models.Model):
     _name = "user.1c"
+    _description = "Odata 1C User"
+
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    description = fields.Char(string='Description', tracking=True)
-    user_id_ib = fields.Char(string='UserIdIB', tracking=True)
-    not_valid = fields.Boolean(string='Not valid', tracking=True)
+    description = fields.Char(string='Description')
+    user_id_ib = fields.Char(string='UserIdIB')
+    not_valid = fields.Boolean(string='Not valid')
 
 class Infobase:
     headers = {
