@@ -5,20 +5,6 @@
             id="menu_odata_root"
             name="Odata"
             sequence="190"/>
-
-        <menuitem
-            id="menu_odata_user"
-            name="User"
-            parent="menu_odata_root"
-            sequence="0"/>
-
-        <menuitem
-            id="menu_odata_users"
-            name="Users"
-            parent="menu_odata_user"
-            action="action_list_user"
-            sequence="3"/>
-
         <menuitem
             id="menu_odata_connection"
             name="Connection"

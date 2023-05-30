@@ -15,7 +15,7 @@ class OneCController(http.Controller):
         _logger.info(value[0])
         return request.render("base_odata_1c.test", {"documents": value})
 
-    @http.route(['/odata_1c/<string:route_name>/<string:base_name>/',
+    @http.route(['/odata_1c/<string:base_name>/<string:route_name>/',
                  '/odata_1c/<string:route_name>/'], type='json', auth='public', methods=['POST'], csrf=False) 
     def get_data(self,route_name=None,base_name="1c_ut", **args):
         return http.request.env['odata.1c.route'].get_by_route(f"{base_name}/{route_name}", request.get_json_data())
