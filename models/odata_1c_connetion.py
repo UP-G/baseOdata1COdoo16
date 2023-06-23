@@ -9,6 +9,7 @@ class Odata1CConnection(models.Model):
     _name = "odata.1c.connection"
     _description = "Odata 1C connection"
     
+    name = fields.Char(string='Name connection')
     login = fields.Char(string='Login')
     password = fields.Char(string='Password')
     url_pattern = fields.Char(string='Url')
