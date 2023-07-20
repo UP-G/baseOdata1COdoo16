@@ -8,7 +8,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'views/test_template.xml',
+        'views/debts_template.xml',
         'views/odata_1c_connection_view.xml',
         'views/odata_1c_route_view.xml',
         'views/odata_1c_menu_views.xml',
