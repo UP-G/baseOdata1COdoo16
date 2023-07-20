@@ -13,7 +13,7 @@ class OneCController(http.Controller):
     def call(self, **args):
         value = http.request.env['odata.1c.route'].get_by_route("1c_ut/debts/", request.get_json_data())
         # _logger.info(value[0])
-        return request.render("base_odata_1c.debts_template", {"documents": value})
+        return http.request.render("base_odata_1c.debts_template", {"documents": value})
 
     @http.route(['/odata_1c/<string:base_name>/<string:route_name>/',
                  '/odata_1c/<string:route_name>/'], type='json', auth='public', methods=['POST'], csrf=False) 
