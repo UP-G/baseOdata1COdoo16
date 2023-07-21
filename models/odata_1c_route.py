@@ -22,6 +22,6 @@ class Odata1CRoute(models.Model):
         return self.connection_id.get_data(url_part, pars, obj)
 
     def get_by_route(self,route, pars, obj= None):
-        _logger.info(self.search([('route','=',route)]))
+        # _logger.info(self.search([('route','=',route)]))
         return self.search([('route','=',route)]).get_data(pars, obj)
 
